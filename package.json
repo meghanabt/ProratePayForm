@@ -1,0 +1,27 @@
+{
+  "name": "multipay",
+  "version": "1.0.0",
+  "description": "Clerkie's Front-End Challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.2.77",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.3"
+  },
+  "browserslist": [
+    "last 2 versions of chrome"
+  ]
+}
