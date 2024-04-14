@@ -3,18 +3,25 @@ import { Account } from '../../types';
 
 type Props={
     account: Account
+   
+   
+    onSelectionChange: any
+
 };
 
-const handleClick = (event) => {
-    console.log('Clicked!', event.target);
-    // Add any other logic you want to execute when the div is clicked
-  };
-
-
-const AccountCard= ({account}: Props)=>
+const AccountCard= ({account, onSelectionChange}: Props)=>
 {
+    
+    const handleClick = () => 
+    {
+            onSelectionChange(account.id);
+            console.log("click check in Card", account.id )
+           
+    };
+
+
     return (
-<div className="account-card mt-4 mb-4 " onClick={handleClick}>
+<div onClick={handleClick} className={account.selected ? 'selected' : ''}>
 
   <div className="card-header">
     <img className="bank-logo" src="path/to/bank_logo.png" alt="Bank Logo"/>
@@ -25,6 +32,13 @@ const AccountCard= ({account}: Props)=>
     <span className="balance-label">Outstanding Balance:</span>
     <span className="balance-amount">$0.00</span> 
 </div>
+{account.selected && account.proratedAmount > 0 && ( // Conditional rendering for prorated amount
+        <div className="prorated-amount">
+          <span className="prorated-label">Prorated Amount:</span>
+          <span className="prorated-value">${account.proratedAmount}</span>
+          
+        </div>
+      )}
 </div>
 
 
