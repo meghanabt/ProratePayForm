@@ -2,7 +2,17 @@ import { useState, useEffect } from "react";
 import { Account } from "../../types";
 import accountDetails from "../utils/mockData";
 
-const useAccounts = () => {
+interface AccountState {
+    totalAmount: number | undefined;
+    accounts: Account[];
+    isFormValid: boolean;
+    errorMessage: string;
+    handleAmountChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleAccountSelect: (accountId: number) => void;
+    handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const useAccount = (): AccountState => {
     const [totalAmount, setTotalAmount] = useState<number | undefined>();
     const [accounts, setAccounts] = useState<Account[]>(accountDetails);
     const [cardClicked, setCardClicked] = useState<boolean>(false);
@@ -19,7 +29,9 @@ const useAccounts = () => {
     };
 
     const calculateProratedAmounts = (totalAmount: number | undefined) => {
-        if (!totalAmount) return;
+        if (!totalAmount) {
+            return;
+        }
 
         const selectedAccounts = accounts.filter((account) => account.selected);
         const totalAccountBalance = accounts.reduce((acc, current) => acc + current.originalBalance, 0);
@@ -93,13 +105,12 @@ const useAccounts = () => {
     return {
         totalAmount,
         accounts,
-        cardClicked,
         isFormValid,
         errorMessage,
         handleAmountChange,
         handleAccountSelect,
-        handleSubmit
+        handleSubmit,
     };
 };
 
-export default useAccounts;
+export default useAccount;
