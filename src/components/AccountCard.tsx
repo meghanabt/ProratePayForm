@@ -3,16 +3,12 @@ import { Account } from '../../types';
 
 type Props = {
     account: Account;
-    isSelected: boolean;
-    proratedAmount: number;
     onSelectionChange: (accountId: number) => void;
-    accounts: Account[];
+    
 };
 
-const AccountCard: React.FC<Props> = ({ account, isSelected, proratedAmount, onSelectionChange, accounts }) => {
+const AccountCard: React.FC<Props> = ({ account, onSelectionChange }) => {
     const handleClick = () => {
-      console.log("prorate-amount in child", proratedAmount)
-      console.log("isSelected", !isSelected)
         onSelectionChange(account.id);
     };
 
@@ -26,12 +22,13 @@ const AccountCard: React.FC<Props> = ({ account, isSelected, proratedAmount, onS
                 <span className="balance-label">Outstanding Balance:</span>
                 <span className="balance-amount">{account.originalBalance}</span> 
             </div>
-            {isSelected && proratedAmount > 0 && (
+            {account.selected && account.proratedAmount > 0 && (
                 <div className="prorated-amount">
                     <span className="prorated-label">Prorated Amount:</span>
-                    <span className="prorated-value">${proratedAmount}</span>
+                    <span className="prorated-value">${account.proratedAmount}</span>
                 </div>
             )}
+            {}
         </div>
     );
 };
