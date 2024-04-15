@@ -47,7 +47,7 @@ const useAccount = (): AccountState => {
             return;
         }
 
-        if (selectedAccounts.length > 0) {
+        if (selectedAccounts.length > 0 && totalAmount>0) {
             const updatedAccounts = accounts.map((account) => {
                 if (account.selected) {
                     account.proratedAmount = Math.round(
@@ -63,10 +63,25 @@ const useAccount = (): AccountState => {
         setErrorMessage(""); // Clear error message if no error
     };
 
-    const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const enteredValue = event.target.value.toString();
+    // const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const enteredValue = event.target.value.toString();
 
-        if (!/^\d+(?:\.\d{0,2})?$/.test(enteredValue)) {
+    //     if (!/^\d+(?:\.\d{0,2})?$/.test(enteredValue)) {
+    //         const decimalPart = enteredValue.split('.').pop();
+    //         if (decimalPart && decimalPart.length > 2) {
+    //             setTotalAmount(roundToTwoDecimals(parseFloat(enteredValue)));
+    //         }
+    //     } else {
+    //         setTotalAmount(parseFloat(enteredValue));
+    //     }
+    // };
+
+    const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        let enteredValue = event.target.value.toString();
+        enteredValue = enteredValue.replace(/^0+/, '');
+
+    
+        if (!/^\d*(?:\.\d{0,2})?$/.test(enteredValue)) {
             const decimalPart = enteredValue.split('.').pop();
             if (decimalPart && decimalPart.length > 2) {
                 setTotalAmount(roundToTwoDecimals(parseFloat(enteredValue)));
@@ -75,6 +90,10 @@ const useAccount = (): AccountState => {
             setTotalAmount(parseFloat(enteredValue));
         }
     };
+    
+    
+    
+    
 
     const handleAccountSelect = (accountId: number) => {
         const updatedAccounts = accounts.map((account) => {
