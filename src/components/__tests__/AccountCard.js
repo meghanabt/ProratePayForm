@@ -5,8 +5,8 @@ import "@testing-library/jest-dom";
 
 test("Test to check if Props is passed while rendering Account Card Component", ()=>{
               
-              render(<AccountCard account={accountDetails[0]} onSelectionChange={accountDetails[0].id}  />)
-    const accountName= screen.getByText('Account 1');
+    render(<AccountCard account={accountDetails[1]} onSelectionChange={accountDetails[1].id}  />)
+    const accountName= screen.getByText('JPMorgan Chase');
     expect(accountName).toBeInTheDocument()
 
 })
