@@ -24,7 +24,7 @@ const AccountCard: React.FC<Props> = ({ account, onSelectionChange }) => {
             style={{
                 width: 'calc(65% - 1rem)',
                 transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-                backgroundColor: (isHovered && !account.selected) || account.selected ? '#e5e7eb' : 'white',
+                backgroundColor: (isHovered && !account.selected) || account.selected ? '#f3f4f6' : 'white',
             }}
         >
             {/* Content of the account card */}
@@ -39,7 +39,7 @@ const AccountCard: React.FC<Props> = ({ account, onSelectionChange }) => {
                 </div>
                 
                 {/* Account balance */}
-                <div className='text-gray-500 '>
+                <div className='text-gray-600 '>
                     <span className="balance-label">Account Balance:</span>
                     <span className="balance-amount">${account.originalBalance}</span>
                 </div>

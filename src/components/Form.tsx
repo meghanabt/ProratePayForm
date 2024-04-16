@@ -3,7 +3,7 @@ import AccountCard from "./AccountCard";
 import useAccount from "../hooks/useAccount"; 
 import PaymentSuccess from "./PaymentSuccess";
 
-const Form: React.FC = () => {
+const PaymentForm: React.FC = () => {
     
   // Destructuring values from the custom hook
   const {
@@ -134,4 +134,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default PaymentForm;
