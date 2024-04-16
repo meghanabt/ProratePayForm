@@ -22,7 +22,7 @@ The Prorate Payment Form is a React application developed from scratch without a
 2. Navigate to the project directory:
 
 ```bash
-   cd proratepayform
+   cd proratepayform/
 ```
 
 3. Install dependencies:
@@ -36,7 +36,12 @@ The Prorate Payment Form is a React application developed from scratch without a
 1. Start the development server:
 
 ```bash
-        npm run start
+    npm run start
+```
+2. Run testcases:
+
+```bash
+    npm run test
 ```
 
 2. Enter the total payment amount in the input field labeled "Amount to Credit $".
@@ -49,9 +54,9 @@ The Prorate Payment Form is a React application developed from scratch without a
 
 ## Project Structure
 
-- src/  : Contains the source code for the application.
+- src/ : Contains the source code for the application.
 - components/ : React components used in the application.
-  1. components/tests : consists of unit testcases files
+  1. components/tests: consists of unit testcases files
   2. others: individual components
 - hooks/ : Custom React hook for managing state and logic.
 - utils/ : consists mock data.
