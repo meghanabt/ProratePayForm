@@ -9,4 +9,4 @@ test("Test to check if Props is passed while rendering Account Card Component", 
     const accountName= screen.getByText('JPMorgan Chase');
     expect(accountName).toBeInTheDocument()
 
-})
+});
