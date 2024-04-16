@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client';
-import Form from './components/Form';
+import PaymentForm from './components/PaymentForm';
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ const App = () => {
                 </div>
             ) : (
                 // Render Form component when loading is complete
-                <Form />
+                <PaymentForm />
             )}
         </div>
     );
