@@ -22,7 +22,7 @@ The Prorate Payment Form is a React application developed from scratch without a
 2. Navigate to the project directory:
 
 ```bash
-   cd proratepayform/
+   cd ProratePayForm//
 ```
 
 3. Install dependencies:
