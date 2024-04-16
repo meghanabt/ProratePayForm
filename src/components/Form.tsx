@@ -1,38 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import AccountCard from "./AccountCard";
-import useAccount from "../hooks/useAccount";
+import useAccount from "../hooks/useAccount"; 
 import PaymentSuccess from "./PaymentSuccess";
 
 const Form: React.FC = () => {
+  // Destructuring values from the custom hook
   const {
     totalAmount,
     accounts,
     isFormValid,
     errorMessage,
+    showErrorMessage,
+    paymentSuccess,
     handleAmountChange,
     handleAccountSelect,
-  } = useAccount(); // Use renamed hook
-
-  const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
-  const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false); // State to track payment success
-
-  const toggleErrorMessage = () => {
-    setShowErrorMessage((prev: boolean) => !prev);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Add your logic to handle form submission
-    // For example, you can check if the form is valid and then set paymentSuccess to true
-    if (isFormValid) {
-      setPaymentSuccess(true);
-    } else {
-      // Handle the case where the form is not valid, if needed
-    }
-  };
+    handleSubmit,
+    toggleErrorMessage
+  } = useAccount(); // Using the custom hook
 
   return (
     <div className="flex h-screen">
+      {/* Left side panel */}
       <div className="flex flex-col w-1/4 bg-blue-900">
         {!paymentSuccess && (
           <>
@@ -46,17 +34,19 @@ const Form: React.FC = () => {
           </>
         )}
       </div>
+      {/* Right side panel */}
       <div className="flex flex-col items-center justify-center w-3/4 p-4">
         {!paymentSuccess && (
           <>
+            {/* Payment form */}
             {accounts.length > 0 ? (
               <form
                 id="credit-form"
                 onSubmit={(e) => handleSubmit(e)}
                 className="relative w-full max-w-4xl p-6 bg-white rounded-lg shadow-md"
-                style={{ width: "90%", margin: "0 auto" }} // Adjust width and margin
+                style={{ width: "90%", margin: "0 auto" }}
               >
-                {/* Form content here */}
+                {/* Input for amount */}
                 <div className="relative mb-8">
                   <label
                     htmlFor="amount"
@@ -84,13 +74,15 @@ const Form: React.FC = () => {
                     }}
                     className="w-1/2 px-3 py-2 mb-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   />
-                  {errorMessage && (
+                  {/* Error message display */}
+                  {showErrorMessage && (
                     <div className="absolute w-full px-4 py-2 mt-1 mb-4 text-red-700 bg-red-100 border border-red-400 rounded shadow-md">
                       {errorMessage}
                     </div>
                   )}
                 </div>
 
+                {/* List of account cards */}
                 <div className="flex flex-col items-center w-full overflow-y-auto mt-14 max-h-96 account-card">
                   {accounts.map((account) => (
                     <AccountCard
@@ -101,6 +93,7 @@ const Form: React.FC = () => {
                   ))}
                 </div>
 
+                {/* Submit button */}
                 <div className="flex justify-center mt-8">
                   <button
                     type="submit"
@@ -130,7 +123,8 @@ const Form: React.FC = () => {
             )}
           </>
         )}
-        {paymentSuccess && <PaymentSuccess/>} {/* Render the PaymentSuccess component if paymentSuccess is true */}
+        {/* Show PaymentSuccess component if payment is successful */}
+        {paymentSuccess && <PaymentSuccess/>}
       </div>
     </div>
   );

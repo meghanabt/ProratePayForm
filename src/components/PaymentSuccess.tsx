@@ -1,11 +1,8 @@
 import React from "react";
 
-
 const PaymentSuccess: React.FC = () => {
-    
 
     return (
-    
         <div 
             id="payment-success" 
             className="relative flex flex-col items-center justify-center w-full max-w-4xl p-6 bg-white rounded-lg shadow-md"
