@@ -39,16 +39,18 @@ The Prorate Payment Form is a React application developed from scratch without a
 5. If the form is valid, the payment will be submitted, and a success message will be displayed. Otherwise, error messages will be shown indicating the reason for the validation failure.
 
 ## Project Structure
-src/: Contains the source code for the application.
-components/: React components used in the application.
-                components/__tests__ : consistes of unit testcases files
-                others: individual components
-hooks/: Custom React hook for managing state and logic.
-utils/: consists mock data.
+
+- src/  : Contains the source code for the application.
+- components/ : React components used in the application.
+            - components/tests : consists of unit testcases files
+            - others: individual components
+- hooks/: Custom React hook for managing state and logic.
+- utils/: consists mock data.
 
 ## Technologies Used
-Parcel Bundler 
-React
-TypeScript
-Jest React Testing Library (for unit testing)
-Tailwind CSS
+
+1. Parcel Bundler 
+2. React
+3. TypeScript
+4. Jest React Testing Library (for unit testing)
+5. Tailwind CSS
