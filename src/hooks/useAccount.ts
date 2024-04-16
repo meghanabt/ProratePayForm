@@ -69,9 +69,29 @@ const useAccount = (): AccountState => {
                 }
                 return account;
             });
-
+        
+            // Adjust prorated amount for the account with remaining amount, if any
+            if (Number(remainingAmount.toFixed(2)) > 0) {
+                const selectedAccountWithLessProrate = updatedAccounts.find((account) => account.selected && account.proratedAmount < account.originalBalance);
+                if (selectedAccountWithLessProrate) {
+                    const newProratedAmount = selectedAccountWithLessProrate.proratedAmount + remainingAmount;
+                    if (newProratedAmount <= selectedAccountWithLessProrate.originalBalance) {
+                        selectedAccountWithLessProrate.proratedAmount = Number(newProratedAmount.toFixed(2));
+                    } else {
+                        // If adding remaining amount exceeds account balance, set prorated amount to original balance
+                        selectedAccountWithLessProrate.proratedAmount = selectedAccountWithLessProrate.originalBalance;
+                    }
+                }
+            }
+        
+            setAccounts(updatedAccounts);
+            setIsFormValid(true);
         }
-    }
+
+        
+        setErrorMessage(""); // Clear error message if no error
+    };
+    
 
     const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let enteredValue = event.target.value.toString();
