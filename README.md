@@ -53,8 +53,8 @@ The Prorate Payment Form is a React application developed from scratch without a
 - components/ : React components used in the application.
   1. components/tests : consists of unit testcases files
   2. others: individual components
-- hooks/: Custom React hook for managing state and logic.
-- utils/: consists mock data.
+- hooks/ : Custom React hook for managing state and logic.
+- utils/ : consists mock data.
 
 ## Technologies Used
 
