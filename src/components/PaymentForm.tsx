@@ -44,6 +44,7 @@ const PaymentForm: React.FC = () => {
             {accounts.length > 0 ? (
               <form
                 id="credit-form"
+                data-testid="payment-form" 
                 onSubmit={(e) => handleSubmit(e)}
                 className="relative w-full max-w-4xl p-6 rounded-lg shadow-lg bg-gray-40"
                 style={{ width: "90%", margin: "0 auto" }}
@@ -64,6 +65,7 @@ const PaymentForm: React.FC = () => {
                     name="amount"
                     min="0.01"
                     placeholder="Enter Amount"
+                    data-testid="amount-input" 
                     required
                     value={totalAmount}
                     onChange={(e) => {

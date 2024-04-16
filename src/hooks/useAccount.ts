@@ -37,7 +37,7 @@ const useAccount = (): AccountState => {
 
         // Recalculate prorated amounts when card is clicked or total amount changes
         calculateProratedAmounts(totalAmount);
-        
+
     }, [cardClicked, totalAmount]); 
 
 
@@ -71,7 +71,7 @@ const useAccount = (): AccountState => {
         }
 
         // Calculate prorated amounts for selected accounts
-        if (selectedAccounts.length > 0 && totalAmount > 0) {
+        if (selectedAccounts.length > 0 ) {
             let remainingAmount = totalAmount;
 
             const updatedAccounts = accounts.map((account) => {

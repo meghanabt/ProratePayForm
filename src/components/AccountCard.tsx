@@ -20,6 +20,7 @@ const AccountCard: React.FC<Props> = ({ account, onSelectionChange }) => {
             onClick={handleClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            data-testid="account-card"
             className={`border rounded-md p-4 mb-4 cursor-pointer transition-transform font-['Open_Sans']`}
             style={{
                 width: 'calc(65% - 1rem)',
@@ -47,7 +48,9 @@ const AccountCard: React.FC<Props> = ({ account, onSelectionChange }) => {
             
             {/* Display prorated amount if account is selected and prorated amount is greater than 0 */}
             {account.selected && account.proratedAmount > 0 && (
-                <div className="flex justify-between text-blue-900">
+                <div 
+                className="flex justify-between text-blue-900"
+                data-testid="prorate-amount">
                     <span className="prorated-label">Prorate Amount:</span>
                     <span className="prorated-value">${account.proratedAmount}</span>
                 </div>
