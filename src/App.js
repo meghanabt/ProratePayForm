@@ -20,7 +20,7 @@ const App = () => {
             {loading ? (
                 // Loading animation
                 <div className="flex flex-col items-center justify-center h-screen">
-                    <p className="mb-2 text-lg black font--bold text">Taking you to payment page</p>
+                    <p className="mb-2 text-2xl black font--bold text">Taking you to payment page</p>
                     <div className="flex space-x-2">
                         <div className="w-3 h-3 bg-blue-900 rounded-full animate-move-left"></div>
                         <div className="w-3 h-3 bg-blue-900 rounded-full animate-move-left" style={{animationDelay: '0.2s'}}></div>

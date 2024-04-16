@@ -24,23 +24,27 @@ const AccountCard: React.FC<Props> = ({ account, onSelectionChange }) => {
             style={{
                 width: 'calc(65% - 1rem)',
                 transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-                backgroundColor: (isHovered && !account.selected) || account.selected ? '#f3f4f6' : 'transparent',
+                backgroundColor: (isHovered && !account.selected) || account.selected ? '#e5e7eb' : 'white',
             }}
         >
             {/* Content of the account card */}
             <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center">
+                    
                     {/* Bank logo */}
-                    <img className="mr-2 bank-logo" src={account.logo} alt="Bank Logo" style={{ width: '30px', height: '30px' }} />
+                    <img className="mr-2 bank-logo" src={account.logo} alt="Bank Logo" style={{ width: '35px', height: '30px' }} />
+                    
                     {/* Bank name */}
-                    <span className="text-xl text-black bank-name">{account.name}</span>
+                    <span className="text-xl text-gray-800 bank-name">{account.name}</span>
                 </div>
+                
+                {/* Account balance */}
                 <div className='text-gray-500 '>
-                    {/* Account balance */}
                     <span className="balance-label">Account Balance:</span>
                     <span className="balance-amount">${account.originalBalance}</span>
                 </div>
             </div>
+            
             {/* Display prorated amount if account is selected and prorated amount is greater than 0 */}
             {account.selected && account.proratedAmount > 0 && (
                 <div className="flex justify-between text-blue-900">

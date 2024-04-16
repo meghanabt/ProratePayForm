@@ -4,22 +4,22 @@ import useAccount from "../hooks/useAccount";
 import PaymentSuccess from "./PaymentSuccess";
 
 const Form: React.FC = () => {
+    
   // Destructuring values from the custom hook
   const {
     totalAmount,
     accounts,
     isFormValid,
     errorMessage,
-    showErrorMessage,
     paymentSuccess,
     handleAmountChange,
     handleAccountSelect,
     handleSubmit,
-    toggleErrorMessage
   } = useAccount(); // Using the custom hook
 
   return (
     <div className="flex h-screen">
+        
       {/* Left side panel */}
       <div className="flex flex-col w-1/4 bg-blue-900">
         {!paymentSuccess && (
@@ -34,23 +34,26 @@ const Form: React.FC = () => {
           </>
         )}
       </div>
+      
       {/* Right side panel */}
       <div className="flex flex-col items-center justify-center w-3/4 p-4">
         {!paymentSuccess && (
           <>
+          
             {/* Payment form */}
             {accounts.length > 0 ? (
               <form
                 id="credit-form"
                 onSubmit={(e) => handleSubmit(e)}
-                className="relative w-full max-w-4xl p-6 bg-white rounded-lg shadow-md"
+                className="relative w-full max-w-4xl p-6 rounded-lg shadow-lg bg-gray-40"
                 style={{ width: "90%", margin: "0 auto" }}
               >
+                
                 {/* Input for amount */}
                 <div className="relative mb-8">
                   <label
                     htmlFor="amount"
-                    className="mb-2 font-['Open_Sans'] text-2xl font-bold text-black"
+                    className="mb-2 mt-8 mr-5 font-['Open_Sans'] text-2xl font-bold text-gray-600"
                   >
                     Amount to credit $:
                   </label>
@@ -65,7 +68,6 @@ const Form: React.FC = () => {
                     value={totalAmount}
                     onChange={(e) => {
                       handleAmountChange(e);
-                      toggleErrorMessage();
                     }}
                     onKeyDown={(e) => {
                       if (e.key === "-") {
@@ -74,9 +76,10 @@ const Form: React.FC = () => {
                     }}
                     className="w-1/2 px-3 py-2 mb-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   />
+                  
                   {/* Error message display */}
-                  {showErrorMessage && (
-                    <div className="absolute w-full px-4 py-2 mt-1 mb-4 text-red-700 bg-red-100 border border-red-400 rounded shadow-md">
+                  {errorMessage && (
+                    <div className="absolute flex-col w-full h-8 px-4 mt-1 text-red-700 bg-red-100 border border-red-400 rounded shadow-md mb-4-col item-center">
                       {errorMessage}
                     </div>
                   )}
@@ -102,7 +105,7 @@ const Form: React.FC = () => {
                                     ${
                                       isFormValid
                                         ? "bg-black hover:scale-125"
-                                        : "bg-gray-300 hover:scale-125"
+                                        : "bg-gray-300"
                                     }`}
                     style={{
                       transition: "transform 0.3s",
@@ -118,11 +121,12 @@ const Form: React.FC = () => {
               </form>
             ) : (
               <div className="flex flex-col items-center justify-center">
-                <div className="text-lg text-gray-800">Please add accounts to transfer</div>
+                <div className="text-2xl gray-900">Please add accounts to transfer</div>
               </div>
             )}
           </>
         )}
+        
         {/* Show PaymentSuccess component if payment is successful */}
         {paymentSuccess && <PaymentSuccess/>}
       </div>

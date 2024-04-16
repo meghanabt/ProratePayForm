@@ -5,8 +5,8 @@ const PaymentSuccess: React.FC = () => {
     return (
         <div 
             id="payment-success" 
-            className="relative flex flex-col items-center justify-center w-full max-w-4xl p-6 bg-white rounded-lg shadow-md"
-            style={{ width: '90%', margin: '0 auto', height: '80vh' }} // Adjust width, margin, and height
+            className="relative flex flex-col items-center justify-center w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg"
+            style={{ width: '90%', margin: '0 auto', height: '80vh' }}
         >
 
             {/* Circle */}

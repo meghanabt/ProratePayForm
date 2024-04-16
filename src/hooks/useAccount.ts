@@ -9,14 +9,13 @@ interface AccountState {
     accounts: Account[]; // List of accounts
     isFormValid: boolean; // Flag indicating if the form is valid
     errorMessage: string; // Error message to display
-    showErrorMessage: boolean; // Flag indicating whether to show error message
     paymentSuccess: boolean; // Flag indicating if payment was successful
 
     // Function signatures for handling user actions
     handleAmountChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleAccountSelect: (accountId: number) => void;
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-    toggleErrorMessage: () => void; // Function to toggle error message visibility
+    // toggleErrorMessage: () => void; // Function to toggle error message visibility
 }
 
 // Custom hook Implementation
@@ -28,15 +27,17 @@ const useAccount = (): AccountState => {
     const [cardClicked, setCardClicked] = useState<boolean>(false); 
     const [isFormValid, setIsFormValid] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>(""); 
-    const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false); 
     const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false); 
 
     // useEffect hook to handle side effects
     useEffect(() => {
+
         // Reset form validity when card is clicked or total amount changes
         setIsFormValid(false);
+
         // Recalculate prorated amounts when card is clicked or total amount changes
         calculateProratedAmounts(totalAmount);
+        
     }, [cardClicked, totalAmount]); 
 
 
@@ -112,7 +113,7 @@ const useAccount = (): AccountState => {
         let enteredValue = event.target.value.toString();
         enteredValue = enteredValue.replace(/^0+/, '');
 
-        // Validate entered value
+        // Validating entered value
         if (!/^\d*(?:\.\d{0,2})?$/.test(enteredValue)) {
             const decimalPart = enteredValue.split('.').pop();
             if (decimalPart && decimalPart.length > 2) {
@@ -148,23 +149,16 @@ const useAccount = (): AccountState => {
         } 
     };
 
-    // Function to toggle error message visibility
-    const toggleErrorMessage = () => {
-        setShowErrorMessage((prev: boolean) => !prev);
-    };
-
     // Return state variables and functions to be used by components
     return {
         totalAmount,
         accounts,
         isFormValid,
         errorMessage,
-        showErrorMessage,
         paymentSuccess,
         handleAmountChange,
         handleAccountSelect,
         handleSubmit,
-        toggleErrorMessage,
     };
 };
 
