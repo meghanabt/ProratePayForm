@@ -52,5 +52,5 @@ The Prorate Payment Form is a React application developed from scratch without a
 1. Parcel Bundler 
 2. React
 3. TypeScript
-4. Jest React Testing Library (for unit testing)
+4. Jest
 5. Tailwind CSS
