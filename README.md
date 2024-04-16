@@ -16,19 +16,19 @@ The Prorate Payment Form is a React application developed from scratch without a
 1. Clone the repository:
 
 ```bash
-   git clone https://github.com/your-username/prorate-payment-form.git
+git clone https://github.com/your-username/prorate-payment-form.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-   cd ProRatePayForm/
+cd ProRatePayForm/
 ```
 
 3. Install dependencies:
 
 ```bash
-    npm install
+npm install
 ```
 
 ## Usage
@@ -36,12 +36,12 @@ The Prorate Payment Form is a React application developed from scratch without a
 1. Start the development server:
 
 ```bash
-    npm run start
+npm run start
 ```
 2. Run testcases:
 
 ```bash
-    npm run test
+npm run test
 ```
 
 2. Enter the total payment amount in the input field labeled "Amount to Credit $".
